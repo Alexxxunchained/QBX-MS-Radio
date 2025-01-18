@@ -1,4 +1,4 @@
-![008F0538](https://github.com/user-attachments/assets/86af9b5b-31f8-44a8-8569-b9ed91217f0a)# QBX-MS-Radio
+📱# QBX-MS-Radio
 Brand new design of radio script, no more big AF picture of radio, instead of a modern smooth channel list
 
 Thd normal radio is just put a pic of a radio for UI and I think this is lame AF, so I inspired by (Stolen) origen radio design and another dev's idea to made this, say it again I made this just for own use and fun, didnt test this seriously so if problem plz submit Issue.
