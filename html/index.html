@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="radioContainer">
+        <div class="radio-wrapper">
+            <div class="radio-header">
+                <span class="radio-title">无线电</span>
+                <div class="frequency-display">
+                    <span>频道-</span>
+                    <span id="currentChannel">0</span>
+                </div>
+                <div class="header-buttons">
+                    <div class="leave-btn" id="leaveChannel">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>离开频道</span>
+                    </div>
+                    <div class="close-btn" id="closeRadio">✕</div>
+                </div>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="frequencyInput" placeholder="输入频道号码.." maxlength="3">
+            </div>
+
+            <div id="jobChannels" class="channels-section" style="display: none;">
+
+            </div>
+
+            <div id="channelMembers" class="members-section" style="display: none;">
+                <div class="section-title">当前成员</div>
+                <div class="members-list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="permanentRadioInfo" class="permanent-radio-info">
+        <div class="current-radio">
+            <span class="radio-label">频道</span>
+            <span id="permanentChannel">0</span>
+        </div>
+        <div id="permanentMembers" class="permanent-members">
+            <div class="section-title">当前成员</div>
+            <div class="members-list">
+
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

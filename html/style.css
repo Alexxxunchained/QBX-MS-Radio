@@ -1,0 +1,393 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+#radioContainer {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.radio-wrapper {
+    width: 100%;
+    background: rgba(23, 23, 23, 0.8);
+    border-radius: 5px;
+    border-left: 2px solid #00ff9d;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+.radio-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: rgba(29, 31, 41, 0.3);
+    gap: 15px;
+}
+
+.radio-title {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: max-content;
+}
+
+.frequency-display {
+    color: white;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-container {
+    padding: 10px 15px;
+    background: rgba(29, 31, 41, 0.5);
+}
+
+#frequencyInput {
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(16, 18, 27, 0.6);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 255, 157, 0.3);
+}
+
+#frequencyInput::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.section-title {
+    padding: 15px;
+    color: #00ff9d;
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(29, 31, 41, 0.3);
+}
+
+.channels-list {
+    padding: 5px 0;
+}
+
+.channel-item {
+    padding: 12px 15px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.channel-item:hover {
+    transform: translateX(5px);
+    background: rgba(0, 255, 157, 0.1);
+}
+
+.channel-item.active {
+    background: rgba(0, 255, 157, 0.1);
+}
+
+.channel-name {
+    font-size: 14px;
+}
+
+.channel-actions {
+    opacity: 0.5;
+}
+
+.channel-item:hover .channel-actions {
+    opacity: 1;
+}
+
+.close-btn {
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.05);
+}
+
+.members-section {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.members-list {
+    padding: 5px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.member-item {
+    padding: 8px 15px;
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+.member-name {
+    flex: 1;
+}
+
+.member-job {
+    margin-left: 10px;
+    color: #00ff9d;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.leave-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.leave-btn:hover {
+    background: rgba(255, 51, 51, 0.2);
+    transform: scale(1.05);
+}
+
+.leave-btn i {
+    font-size: 14px;
+}
+
+.leave-btn span {
+    display: none;
+}
+
+.leave-btn:hover span {
+    display: inline;
+}
+
+.permanent-radio-info {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(16, 18, 27, 0.85);
+    border-left: 2px solid #00ff9d;
+    padding: 10px;
+    min-width: 200px;
+    display: none;
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-out;
+    backdrop-filter: blur(8px);
+}
+
+.current-radio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: rgba(29, 31, 41, 0.5);
+    margin-bottom: 10px;
+}
+
+.radio-label {
+    color: #00ff9d;
+    font-size: 14px;
+}
+
+#permanentChannel {
+    color: white;
+    font-size: 14px;
+}
+
+.permanent-members {
+    margin-top: 10px;
+}
+
+.permanent-members .section-title {
+    color: #00ff9d;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.permanent-member {
+    padding: 8px 15px;
+    color: white;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+.permanent-member-job {
+    color: #00ff9d;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.permanent-member.talking {
+    animation: smoothTalking 0.6s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.permanent-member.talking .permanent-member-name {
+    color: #00ff9d;
+    text-shadow: 0 0 8px rgba(0, 255, 157, 0.3);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes smoothTalking {
+    0% {
+        border-left: 2px solid rgba(0, 255, 157, 0.4);
+        background: linear-gradient(90deg, 
+            rgba(0, 255, 157, 0.2) 0%,
+            rgba(0, 255, 157, 0.05) 100%
+        );
+    }
+    50% {
+        border-left: 2px solid rgba(0, 255, 157, 0.8);
+        background: linear-gradient(90deg, 
+            rgba(0, 255, 157, 0.3) 0%,
+            rgba(0, 255, 157, 0.1) 100%
+        );
+    }
+    100% {
+        border-left: 2px solid rgba(0, 255, 157, 0.4);
+        background: linear-gradient(90deg, 
+            rgba(0, 255, 157, 0.2) 0%,
+            rgba(0, 255, 157, 0.05) 100%
+        );
+    }
+}
+
+#radioContainer {
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.channel-item {
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+    backdrop-filter: blur(5px);
+}
+
+.channel-item:hover {
+    transform: translateX(5px);
+    background: rgba(0, 255, 157, 0.1);
+}
+
+.member-item, .permanent-member {
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+.permanent-member.talking {
+    animation: smoothTalking 0.6s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.permanent-radio-info {
+    transition: all 0.3s ease-in-out;
+    animation: fadeIn 0.3s ease-out;
+    backdrop-filter: blur(8px);
+}
+
+.leave-btn, .close-btn {
+    transition: all 0.2s ease;
+}
+
+.leave-btn:hover, .close-btn:hover {
+    transform: scale(1.05);
+}
+
+.search-container input {
+    transition: all 0.2s ease;
+    border: 1px solid rgba(0, 255, 157, 0.3);
+}
+
+.search-container input:focus {
+    border-color: rgba(0, 255, 157, 0.8);
+    box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 157, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 157, 0.5);
+}
+
+.close-btn {
+    color: white;
+    cursor: pointer;
+    padding: 8px 12px;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.close-btn:hover {
+    transform: scale(1.05);
+} 
