@@ -24,4 +24,5 @@ When ur job dont have resctric channel, u can only type channel number to join
 ![7390fb937260012e4ae88fa1421aaa7](https://github.com/user-attachments/assets/575f234b-0809-4932-82ca-f8b13b9de621)
 
 Joined other channel without resctric
-![Uploading 8daae2f043d781a4a178788c83a552a.png…]()
+![8daae2f043d781a4a178788c83a552a](https://github.com/user-attachments/assets/2a2f2f37-b4e9-4dc6-b9f9-d9c61899abb2)
+
