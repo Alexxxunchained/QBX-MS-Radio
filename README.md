@@ -1,3 +1,6 @@
+For the record this idea is from the post: https://discord.com/channels/1012753553418354748/1329234827270160445 by oskydoki
+Respect for him and remeber to check post above for better version of radio. Peace out
+
 📱# QBX-MS-Radio
 Brand new design of radio script, no more big AF picture of radio, instead of a modern smooth channel list
 
