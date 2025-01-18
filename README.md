@@ -4,7 +4,7 @@ Respect for him and remeber to check post above for better version of radio. Pea
 📱# QBX-MS-Radio
 Brand new design of radio script, no more big AF picture of radio, instead of a modern smooth channel list
 
-Thd normal radio is just put a pic of a radio for UI and I think this is lame AF, so I inspired by (Stolen) origen radio design and another dev's idea to made this, say it again I made this just for own use and fun, didnt test this seriously so if problem plz submit Issue.
+Thd normal radio is just put a pic of a radio for UI and I think this is lame AF, so I inspired by (Stolen) oskydoki's idea to made this, say it again I made this just for own use and fun, didnt test this seriously so if problem plz submit Issue.
 
 🚀Preview:
 
