@@ -2,8 +2,8 @@ fx_version 'cerulean'
 game 'gta5'
 
 name 'MySword_Radio'
-author 'MySword傅剑寒'
-description 'ms-Radio 船新的无线电脚本'
+author 'MySword'
+description 'ms-Radio - A Brand New Radio Script'
 version '1.0.4'
 
 shared_script {

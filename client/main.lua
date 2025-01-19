@@ -8,14 +8,14 @@ local isTalking = false
 -- c从qbx_radio借用(偷来)的代码 Borrowed(Stolen) from qbx_radio
 local function connectToRadio(channel)
     if channel < Config.MinFrequency or channel > Config.MaxFrequency then
-        QBCore.Functions.Notify('无效的频道', 'error') -- Invalid channel
+        QBCore.Functions.Notify('Invalid channel', 'error')
         return
     end
 
     if Config.RestrictedChannels[channel] then
         local hasPermission = Config.RestrictedChannels[channel][QBCore.Functions.GetPlayerData().job.name]
         if not hasPermission then
-            QBCore.Functions.Notify('你没有权限使用此频道', 'error') -- You don't have permission to use this channel
+            QBCore.Functions.Notify('You don\'t have permission to use this channel', 'error')
             return
         end
     end
@@ -45,7 +45,7 @@ local function connectToRadio(channel)
         channelName = channelName
     })
     
-    QBCore.Functions.Notify('已加入频道: ' .. channel, 'success') -- Joined channel: channel
+    QBCore.Functions.Notify('Joined channel: ' .. channel, 'success')
     
     TriggerServerEvent('ms_radio:server:joinChannel', channel)
 end
@@ -65,7 +65,7 @@ local function leaveRadio()
         channel = 0
     })
     
-    QBCore.Functions.Notify('已离开频道', 'error') -- Left channel
+    QBCore.Functions.Notify('Left channel', 'error')
 end
 
 RegisterNetEvent('ms_radio:client:useRadio')
