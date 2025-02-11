@@ -1,27 +1,33 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+local QBCore = nil
+local ESX = nil
 
-QBCore.Functions.CreateUseableItem("radio", function(source)
-    TriggerClientEvent('ms_radio:client:useRadio', source)
-end)
+if Config.Framework == 'qbcore' then
+    QBCore = exports['qb-core']:GetCoreObject()
+elseif Config.Framework == 'esx' then
+    ESX = exports['es_extended']:getSharedObject()
+end
 
--- AddEventHandler('onResourceStart', function(resourceName)
---     if (GetCurrentResourceName() ~= resourceName) then
---         return
---     end
--- end)
-
--- AddEventHandler('onResourceStop', function(resourceName)
---     if (GetCurrentResourceName() ~= resourceName) then
---         return
---     end
--- end)
+if Config.Framework == 'qbcore' then
+    QBCore.Functions.CreateUseableItem("radio", function(source)
+        TriggerClientEvent('ms_radio:client:useRadio', source)
+    end)
+elseif Config.Framework == 'esx' then
+    ESX.RegisterUsableItem("radio", function(source)
+        TriggerClientEvent('ms_radio:client:useRadio', source)
+    end)
+end
 
 local radioChannels = {}
 
 RegisterNetEvent('ms_radio:server:joinChannel')
 AddEventHandler('ms_radio:server:joinChannel', function(channel)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
+    local Player = nil
+    if Config.Framework == 'qbcore' then
+        Player = QBCore.Functions.GetPlayer(src)
+    elseif Config.Framework == 'esx' then
+        Player = ESX.GetPlayerFromId(src)
+    end
     if not Player then return end
 
     for chan, players in pairs(radioChannels) do
@@ -39,8 +45,8 @@ AddEventHandler('ms_radio:server:joinChannel', function(channel)
     
     table.insert(radioChannels[channel], {
         source = src,
-        name = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
-        job = Player.PlayerData.job.name
+        name = Player.getName(),
+        job = Player.getJob().name
     })
 
     for _, playerData in ipairs(radioChannels[channel]) do

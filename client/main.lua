@@ -1,21 +1,41 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+local QBCore = nil
+local ESX = nil
+
+if Config.Framework == 'qbcore' then
+    QBCore = exports['qb-core']:GetCoreObject()
+elseif Config.Framework == 'esx' then
+    ESX = exports['es_extended']:getSharedObject()
+end
+
 local radioMenu = false
 local onRadio = false
 local radioChannel = 0
 local radioVolume = Config.DefaultVolume
 local isTalking = false
 
--- c从qbx_radio借用(偷来)的代码 Borrowed(Stolen) from qbx_radio
 local function connectToRadio(channel)
     if channel < Config.MinFrequency or channel > Config.MaxFrequency then
-        QBCore.Functions.Notify('Invalid channel', 'error')
+        if Config.Framework == 'qbcore' then
+            QBCore.Functions.Notify('Invalid channel', 'error')
+        elseif Config.Framework == 'esx' then
+            ESX.ShowNotification('Invalid channel', 'error')
+        end
         return
     end
 
     if Config.RestrictedChannels[channel] then
-        local hasPermission = Config.RestrictedChannels[channel][QBCore.Functions.GetPlayerData().job.name]
+        local hasPermission = false
+        if Config.Framework == 'qbcore' then
+            hasPermission = Config.RestrictedChannels[channel][QBCore.Functions.GetPlayerData().job.name]
+        elseif Config.Framework == 'esx' then
+            hasPermission = Config.RestrictedChannels[channel][ESX.GetPlayerData().job.name]
+        end
         if not hasPermission then
-            QBCore.Functions.Notify('You don\'t have permission to use this channel', 'error')
+            if Config.Framework == 'qbcore' then
+                QBCore.Functions.Notify('You don\'t have permission to use this channel', 'error')
+            elseif Config.Framework == 'esx' then
+                ESX.ShowNotification('You don\'t have permission to use this channel', 'error')
+            end
             return
         end
     end
@@ -45,13 +65,16 @@ local function connectToRadio(channel)
         channelName = channelName
     })
     
-    QBCore.Functions.Notify('Joined channel: ' .. channel, 'success')
+    if Config.Framework == 'qbcore' then
+        QBCore.Functions.Notify('Joined channel: ' .. channel, 'success')
+    elseif Config.Framework == 'esx' then
+        ESX.ShowNotification('Joined channel: ' .. channel, 'success')
+    end
     
     TriggerServerEvent('ms_radio:server:joinChannel', channel)
 end
 
 local function leaveRadio()
-
     if radioChannel ~= 0 then
         TriggerServerEvent('ms_radio:server:leaveChannel', radioChannel)
     end
@@ -65,13 +88,22 @@ local function leaveRadio()
         channel = 0
     })
     
-    QBCore.Functions.Notify('Left channel', 'error')
+    if Config.Framework == 'qbcore' then
+        QBCore.Functions.Notify('Left channel', 'error')
+    elseif Config.Framework == 'esx' then
+        ESX.ShowNotification('Left channel', 'error')
+    end
 end
 
 RegisterNetEvent('ms_radio:client:useRadio')
 AddEventHandler('ms_radio:client:useRadio', function()
     if not radioMenu then
-        local PlayerData = QBCore.Functions.GetPlayerData()
+        local PlayerData = nil
+        if Config.Framework == 'qbcore' then
+            PlayerData = QBCore.Functions.GetPlayerData()
+        elseif Config.Framework == 'esx' then
+            PlayerData = ESX.GetPlayerData()
+        end
         local jobChannels = Config.JobChannels[PlayerData.job.name]
         
         SendNUIMessage({
@@ -144,7 +176,6 @@ AddEventHandler('ms_radio:client:updateTalking', function(channel, source, isSpe
     end
 end)
 
--- this part is to fix the bug that the radio list will still showing when the player is in the pause menu
 CreateThread(function()
     while true do
         Wait(500)

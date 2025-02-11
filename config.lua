@@ -1,5 +1,7 @@
 Config = {}
 
+
+Config.Framework = 'esx' -- Change this to 'qbcore' if you are using QBX
 Config.Debug = false
 
 Config.MaxFrequency = 999   -- Maximum channel number

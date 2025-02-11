@@ -2,9 +2,9 @@ fx_version 'cerulean'
 game 'gta5'
 
 name 'MySword_Radio'
-author 'MySword'
+author 'MySword/MurphyBluff'
 description 'ms-Radio - A Brand New Radio Script'
-version '1.0.4'
+version '1.0.5'
 
 shared_script {
     '@ox_lib/init.lua',
