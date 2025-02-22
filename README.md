@@ -1,10 +1,10 @@
 For the record this idea is from the post: https://discord.com/channels/1012753553418354748/1329234827270160445 by oskydoki
 Respect for him and remeber to check post above for better version of radio. Peace out
 
-📱# QBX-MS-Radio
+📱# pablo_radio this is just fork from ms_radio created this file to support esx
 Brand new design of radio script, no more big AF picture of radio, instead of a modern smooth channel list
 
-Thd normal radio is just put a pic of a radio for UI and I think this is lame AF, so I inspired by (Stolen) oskydoki's idea to made this, say it again I made this just for own use and fun, didnt test this seriously so if problem plz submit Issue.
+Thd normal radio is just put a pic of a radio for UI for ESX and QBX
 
 🚀Preview:
 
